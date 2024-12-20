@@ -6,7 +6,7 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 async function addWallet(privateKey) {
   const { data, error } = await supabase
     .from('wallets')
-    .insert([{ private_key: privateKey }]);
+    .insert([{ private_key: privateKey, balance: 0 }]);
 
   if (error) {
     console.error("Erro ao adicionar chave:", error);
@@ -91,10 +91,13 @@ function updateBalanceGraph(labels, balances) {
 // Chamada inicial para exibir as carteiras já cadastradas
 fetchWallets();
 
-// Adicionar chave privada via botão
+// Adicionar chave privada via campo de texto
 document.getElementById('add-wallet-btn').addEventListener('click', () => {
-  const privateKey = prompt("Digite a chave privada:");
+  const privateKey = document.getElementById('private-key-input').value;
   if (privateKey) {
     addWallet(privateKey);
+    document.getElementById('private-key-input').value = '';  // Limpar o campo após adicionar
+  } else {
+    alert('Por favor, insira uma chave privada!');
   }
 });
