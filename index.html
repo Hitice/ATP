@@ -37,7 +37,7 @@
     .wallets-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 20px;
       margin-top: 20px;
     }
 
@@ -69,7 +69,22 @@
       margin-top: 20px;
     }
 
-    .add-wallet-btn {
+    .input-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .input-container input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 80%;
+    }
+
+    .input-container button {
       background-color: #4CAF50;
       color: white;
       padding: 10px 20px;
@@ -80,7 +95,7 @@
       transition: background-color 0.3s;
     }
 
-    .add-wallet-btn:hover {
+    .input-container button:hover {
       background-color: #45a049;
     }
 
@@ -106,14 +121,15 @@
   <h1>Monitoramento de Carteiras BTC</h1>
 
   <div class="container">
-    <div class="wallets-container" id="wallets-list">
-      <!-- Aqui serão listadas as carteiras e seus saldos -->
-    </div>
-
-    <div class="button-container">
-      <button class="add-wallet-btn" id="add-wallet-btn">
+    <div class="input-container">
+      <input type="text" id="private-key-input" placeholder="Digite a chave privada">
+      <button id="add-wallet-btn">
         <i class="fas fa-plus-circle"></i> Adicionar Chave Privada
       </button>
+    </div>
+
+    <div class="wallets-container" id="wallets-list">
+      <!-- Aqui serão listadas as carteiras e seus saldos -->
     </div>
 
     <div class="balance-graph" id="balance-chart-container">
