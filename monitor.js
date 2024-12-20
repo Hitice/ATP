@@ -1,5 +1,5 @@
-const supabaseUrl = 'https://your-project-url.supabase.co'; // Substitua pelo seu URL do Supabase
-const supabaseKey = 'your-anon-key'; // Substitua pela sua chave anon
+const supabaseUrl = 'https://hgipmtqubywfwzrxbvkr.supabase.co'; // Substitua pelo seu URL do Supabase
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhnaXBtdHF1Ynl3Znd6cnhidmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ2OTQ2NjYsImV4cCI6MjA1MDI3MDY2Nn0.8bfjnI5rrWsFNJBDQZxOdKn2nltaa6681AQ4ODZHFJ0'; // Substitua pela sua chave anon
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Função para adicionar uma chave privada ao banco de dados
@@ -88,16 +88,15 @@ function updateBalanceGraph(labels, balances) {
   });
 }
 
-// Chamada inicial para exibir as carteiras já cadastradas
-fetchWallets();
-
-// Adicionar chave privada via campo de texto
+// Função de evento para adicionar carteira
 document.getElementById('add-wallet-btn').addEventListener('click', () => {
   const privateKey = document.getElementById('private-key-input').value;
   if (privateKey) {
     addWallet(privateKey);
-    document.getElementById('private-key-input').value = '';  // Limpar o campo após adicionar
   } else {
-    alert('Por favor, insira uma chave privada!');
+    alert('Por favor, insira uma chave privada válida!');
   }
 });
+
+// Chamar a função para buscar carteiras ao carregar a página
+fetchWallets();
